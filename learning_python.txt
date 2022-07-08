@@ -1,0 +1,8 @@
+
+
+
+  In Python you can doing general software development
+  In Python you can diving into data science and math
+  In Python you can speeding up and automating your workflow
+  In Python you can building embedded systems and robots
+
