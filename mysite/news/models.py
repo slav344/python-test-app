@@ -2,7 +2,6 @@ from django.db import models
 
 
 class News(models.Model):
-    objects = None
     title = models.CharField(max_length=150, verbose_name='Назва')
     content = models.TextField(blank=True, verbose_name='Контент')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата друку')
@@ -21,7 +20,6 @@ class News(models.Model):
 
 
 class Category(models.Model):
-    objects = None
     title = models.CharField(max_length=150, db_index=True, verbose_name='Назва категорії')
 
     def __str__(self):
