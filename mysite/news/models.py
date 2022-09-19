@@ -13,7 +13,7 @@ class News(models.Model):
     views = models.IntegerField(default=0)
 
     def delete(self):
-        return reverse('view_news', kwargs={"pk": self.pk})
+        return reverse('view_news',kwargs={"pk": self.pk})
 
     def get_absolute_url(self):
         return reverse('view_news', kwargs={"pk": self.pk})
