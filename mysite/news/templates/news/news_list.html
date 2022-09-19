@@ -12,9 +12,9 @@
 {% for item in object_list %}
 <div class="card mb-3">
     <div class="card-header">
-        Категорія:<a href="{{ item.category.get_absolute_url}}">{{ item.category }}</a>
+        Категорія: <a href="{{ item.category.get_absolute_url}}">{{ item.category }}</a>
     </div>
-    <div class="card-body">.
+    <div class="card-body">
         <div class="media">
             {% if item.photo %}
             <img src="{{ item.photo.url }}" alt="" width="350" class="mr-3">
@@ -25,6 +25,7 @@
                 <h5 class="card-title">{{ item.title }}</h5>
                 <p class="card-text">{{ item.content|safe|linebreaks|truncatewords:50 }}</p>
                 <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+                <a href="{{ item.delete }}" class="btn btn-primary mb1 bg-red">Delete</a>
             </div>
         </div>
     </div>
