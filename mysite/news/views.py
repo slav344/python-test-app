@@ -21,6 +21,7 @@ class HomeNews(ListView, MyMixin):
     templates_name = 'news/home_news_list.html'
     context_object_name = 'news'
     mixin_prop = 'hello world'
+    paginate_by = 2
 
     # extra_context = {'title': 'Головна'}
 
