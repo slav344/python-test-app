@@ -3,16 +3,16 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 
-from .forms import NewsForm
+from .forms import NewsForm, UserRegisterForm
 from .models import News, Category
 from .utils import MyMixin
-from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib import messages
 
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Ви успішно зареєструвались')
@@ -20,7 +20,7 @@ def register(request):
         else:
             messages.error(request, 'Помилка регістрації')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'news/register.html', {"form": form})
 
 
