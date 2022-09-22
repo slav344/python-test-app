@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
@@ -6,6 +6,26 @@ from django.core.paginator import Paginator
 from .forms import NewsForm
 from .models import News, Category
 from .utils import MyMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Ви успішно зареєструвались')
+            return redirect('Login')
+        else:
+            messages.error(request, 'Помилка регістрації')
+    else:
+        form = UserCreationForm()
+    return render(request, 'news/register.html', {"form": form})
+
+
+def login(request):
+    return render(request, 'news/login.html')
 
 
 def test(request):
